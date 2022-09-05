@@ -25,10 +25,12 @@ export default class Calculator extends Component<object, CalculatorState> {
       : <span data-testid="error-message">Invalid input. Please enter number from 1 to 1000.</span>;
 
     return (
-      <div data-testid="calculator">
+      <div className={styles.container} data-testid="calculator">
         <input type="text" value={this.state.arabicValue} onChange={this.convert} className={styles.input} data-testid="input" />
         <br />
-        {span}
+        <div className={styles.result}>
+          {span}
+        </div>
       </div>
     )
   }
