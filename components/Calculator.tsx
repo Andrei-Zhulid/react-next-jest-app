@@ -11,7 +11,8 @@ export default class Calculator extends Component<object, CalculatorState> {
   convert = (event: ChangeEvent<HTMLInputElement>): void => {
     this.setState({ arabicValue: event.target.value })
 
-    if (!Number(event.target.value)) {
+    const value = Number(event.target.value);
+    if (!value || value <= 0 || value > 1000) {
       this.setState({ romanValue: initialState.romanValue })
       return
     }
