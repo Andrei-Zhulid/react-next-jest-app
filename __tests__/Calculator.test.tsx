@@ -13,13 +13,6 @@ describe('Home', () => {
     expect(input.value).toBe("")
   })
 
-  it('display entered value as roman numeral', () => {
-    const input = setupInput()
-    fireEvent.change(input, { target: { value: "23" } })
-    const romanNumeral = screen.getByTestId('roman-numeral')
-    expect(romanNumeral.textContent).toBe("23")
-  })
-
   it('the error message is not presented initially', () => {
     render(<Calculator />)
     const element = screen.queryByTestId('error-message')
