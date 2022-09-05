@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import Calculator from '@/components/Calculator';
 
 describe('Home', () => {
   it('Calculator renders an empty text input', () => {
