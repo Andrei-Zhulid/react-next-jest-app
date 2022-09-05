@@ -7,4 +7,11 @@ describe('Arabic to Roman Converter', () => {
     roman = ArabicToRomanConverter.convert(-10)
     expect(roman).toBe("")
   })
+
+  it('test arabic to roman converter', () => {
+    let roman = ArabicToRomanConverter.convert(19)
+    expect(roman).toBe("XIX")
+    roman = ArabicToRomanConverter.convert(999)
+    expect(roman).toBe("CMXCIX")
+  })
 })
