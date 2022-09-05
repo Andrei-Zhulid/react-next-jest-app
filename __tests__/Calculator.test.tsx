@@ -45,4 +45,14 @@ describe('Home', () => {
     const element = screen.queryByTestId('error-message')
     expect(element).toBeNull()
   })
+
+  it('convert arabic numbers to roman', () => {
+    const input = setupInput()
+    fireEvent.change(input, { target: { value: "4" } })
+    let romanNumeral = screen.getByTestId('roman-numeral')
+    expect(romanNumeral.textContent).toBe("IV")
+    fireEvent.change(input, { target: { value: "123" } })
+    romanNumeral = screen.getByTestId('roman-numeral')
+    expect(romanNumeral.textContent).toBe("CXXIII")
+  })
 })
