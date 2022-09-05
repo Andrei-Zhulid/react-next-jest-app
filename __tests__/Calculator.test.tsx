@@ -32,4 +32,14 @@ describe('Home', () => {
     const error = screen.getByTestId('error-message')
     expect(error).toBeInTheDocument()
   })
+
+  it('enter a number out of the borders', () => {
+    const input = setupInput()
+    fireEvent.change(input, { target: { value: "0" } })
+    let error = screen.getByTestId('error-message')
+    expect(error).toBeInTheDocument()
+    fireEvent.change(input, { target: { value: "1001" } })
+    error = screen.getByTestId('error-message')
+    expect(error).toBeInTheDocument()
+  })
 })
