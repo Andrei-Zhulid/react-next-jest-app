@@ -42,4 +42,14 @@ describe('Home', () => {
     error = screen.getByTestId('error-message')
     expect(error).toBeInTheDocument()
   })
+
+  it('enter a valid number after an invalid should hide the error message', () => {
+    const input = setupInput()
+    fireEvent.change(input, { target: { value: "0" } })
+    const error = screen.getByTestId('error-message')
+    expect(error).toBeInTheDocument()
+    fireEvent.change(input, { target: { value: "123" } })
+    const element = screen.queryByTestId('error-message')
+    expect(element).toBeNull()
+  })
 })
