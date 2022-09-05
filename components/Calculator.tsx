@@ -1,5 +1,6 @@
 import { ChangeEvent, Component } from 'react'
 import styles from './Calculator.module.css'
+import ArabicToRomanConverter from '../helpers/ArabicToRomanConverter';
 
 const initialState = { arabicValue: "", romanValue: "" }
 type CalculatorState = { arabicValue: string, romanValue: string }
@@ -17,7 +18,8 @@ export default class Calculator extends Component<object, CalculatorState> {
       return
     }
 
-    this.setState({ romanValue: event.target.value })
+    let result = ArabicToRomanConverter.convert(Number(event.target.value))
+    this.setState({ romanValue: result });
   }
 
   render() {
