@@ -10,15 +10,25 @@ export default class Calculator extends Component<object, CalculatorState> {
   //TODO: Implement Arabic to Roman conversion instead of the mock function
   convert = (event: ChangeEvent<HTMLInputElement>): void => {
     this.setState({ arabicValue: event.target.value })
+
+    if (!Number(event.target.value)) {
+      this.setState({ romanValue: initialState.romanValue })
+      return
+    }
+
     this.setState({ romanValue: event.target.value })
   }
 
   render() {
+    let span = !this.state.arabicValue || this.state.romanValue
+      ? <span data-testid="roman-numeral">{this.state.romanValue ?? "&nbsp;"}</span>
+      : <span data-testid="error-message">Invalid input. Please enter number from 1 to 1000.</span>;
+
     return (
       <div data-testid="calculator">
         <input type="text" value={this.state.arabicValue} onChange={this.convert} className={styles.input} data-testid="input" />
         <br />
-        <span data-testid="roman-numeral">{this.state.romanValue}</span>
+        {span}
       </div>
     )
   }
