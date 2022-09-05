@@ -19,4 +19,17 @@ describe('Home', () => {
     const romanNumeral = screen.getByTestId('roman-numeral')
     expect(romanNumeral.textContent).toBe("23")
   })
+
+  it('the error message is not presented initially', () => {
+    render(<Calculator />)
+    const element = screen.queryByTestId('error-message')
+    expect(element).toBeNull()
+  })
+
+  it('enter a text instead of a number', () => {
+    const input = setupInput()
+    fireEvent.change(input, { target: { value: "some text" } })
+    const error = screen.getByTestId('error-message')
+    expect(error).toBeInTheDocument()
+  })
 })
